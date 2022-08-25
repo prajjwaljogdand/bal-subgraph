@@ -1,0 +1,30 @@
+specVersion: 0.0.4
+description: Bal subgraph
+repository: https://github.com/prajjwaljogdand/bal_subgraph
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum/contract
+    name: Bal
+    network: goerli
+    source:
+      address: '0x771500444863dB465bb5AFAA95e1654Ae15f6Acf'
+      abi: Bal
+      startBlock: 7429502
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.6
+      language: wasm/assemblyscript
+      file: ./src/mapping.ts
+      entities:
+        - Entry
+        - Scam
+      abis:
+        - name: Bal
+          file: ./abis/Bal.json
+      eventHandlers:
+        - event: logs(string,uint256,indexed uint256)
+          handler: handleEntry
+        - event : scam(string,indexed uint256,uint256)
+          handler: handleScam
+      

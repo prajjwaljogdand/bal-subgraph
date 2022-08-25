@@ -1,0 +1,28 @@
+type Entry @entity{
+    id : ID!
+    txHash : String!
+    block : BigInt!
+    truckId : String!
+    timeOut : BigInt!
+    weight : BigInt!
+}
+
+type Vehicle @entity{
+    id : ID!
+    numberOfTrips : BigInt!
+}
+
+type TripData @entity{
+    id: ID!
+    count : BigInt!
+    numberOfVehicles : BigInt!
+}
+
+type Scam @entity{
+    id : ID!
+    txHash : String!
+    block : BigInt!
+    truckId : String!
+    timeOut : BigInt!
+    weight : BigInt!
+}
